@@ -13,7 +13,10 @@ app.use(express.json());
 
 // Routes
 const authRoutes = require("./routes/auth");
+const transactionRoutes = require("./routes/transactions");
+
 app.use("/api/auth", authRoutes);
+app.use("/api/transactions", transactionRoutes);
 
 // Test route
 app.get("/", (req, res) => {
