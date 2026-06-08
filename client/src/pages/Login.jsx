@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -23,6 +23,8 @@ export default function Login() {
       // Save token to localStorage so we stay logged in
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("email", res.data.email);
+
+      setToken(res.data.token);
 
       navigate("/dashboard");
     } catch (err) {

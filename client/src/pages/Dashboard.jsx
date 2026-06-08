@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Dashboard() {
+export default function Dashboard({ setToken }) {
   const navigate = useNavigate();
   const email = localStorage.getItem("email");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
+    setToken(null);
     navigate("/login");
   };
 
